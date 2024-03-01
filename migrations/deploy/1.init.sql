@@ -3,13 +3,8 @@
 BEGIN;
 
 -- Création des domaines pour les email et les codes postaux
-CREATE DOMAIN mail_address AS TEXT CHECK(
-    VALUE ~ '^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$'
-    );
-CREATE DOMAIN postal_code AS TEXT CHECK (
-    VALUE ~ '^0[1-9][0-9]{3}$'
-    AND VALUE ~ '^[1-9][0-9]{4}$'
-    );
+CREATE DOMAIN mail_address AS TEXT CHECK( VALUE ~ '^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$');
+CREATE DOMAIN postal_code AS TEXT CHECK (VALUE ~ '^[0-9]{5}$');
 
 
 -- Création de la table visitor
