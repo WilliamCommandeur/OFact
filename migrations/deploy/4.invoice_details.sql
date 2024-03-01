@@ -3,7 +3,8 @@
 BEGIN;
 
 -- Création d'une fonction pour récupérer le prix total de la commande
-CREATE FUNCTION calculate_total_price(quantity INT, price FLOAT, tva_ratio FLOAT) RETURNS FLOAT AS
+CREATE FUNCTION calculate_total_price(quantity INT, price FLOAT, tva_ratio FLOAT) 
+RETURNS FLOAT AS
 $$
     SELECT ((price + (price * tva_ratio)) * quantity)
 $$ LANGUAGE sql;

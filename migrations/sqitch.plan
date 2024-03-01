@@ -6,3 +6,4 @@
 3.crud_functions 2024-03-01T09:39:59Z Etudiant O'clock <student@teleporter> # insert et update des données
 4.invoice_details 2024-03-01T10:58:50Z Etudiant O'clock <student@teleporter> # ajout d'une vue détaillée des factures
 5.invoice_recap 2024-03-01T11:46:09Z Etudiant O'clock <student@teleporter> # ajout d'une vue récapitulative des factures
+6.sales 2024-03-01T12:24:10Z Etudiant O'clock <student@teleporter> # ajout d'une fonction pour récupérer les ventes sur un intervalle
