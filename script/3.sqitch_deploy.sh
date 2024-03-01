@@ -8,3 +8,4 @@ sqitch deploy 3.crud_functions
 sqitch deploy 4.invoice_details
 sqitch deploy 5.invoice_recap
 sqitch deploy 6.sales
+sqitch deploy 7.packed_invoice

@@ -7,3 +7,4 @@
 4.invoice_details 2024-03-01T10:58:50Z Etudiant O'clock <student@teleporter> # ajout d'une vue détaillée des factures
 5.invoice_recap 2024-03-01T11:46:09Z Etudiant O'clock <student@teleporter> # ajout d'une vue récapitulative des factures
 6.sales 2024-03-01T12:24:10Z Etudiant O'clock <student@teleporter> # ajout d'une fonction pour récupérer les ventes sur un intervalle
+7.packed_invoice 2024-03-01T13:20:01Z Etudiant O'clock <student@teleporter> # ajout de la fonction packed_invoice
