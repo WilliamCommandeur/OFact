@@ -8,4 +8,5 @@ export PGDATABASE=ofact
 # sqitch verify 4.invoice_details
 # sqitch verify 5.invoice_recap
 # sqitch verify 6.sales
-sqitch verify 7.packed_invoice
+# sqitch verify 7.packed_invoice
+sqitch verify 8.add_invoice
