@@ -3,3 +3,4 @@
 
 1.init 2024-03-01T08:10:49Z Etudiant O'clock <student@teleporter> # création des tables
 2.3fn 2024-03-01T09:17:55Z Etudiant O'clock <student@teleporter> # calcul du taux de tva
+3.crud_functions 2024-03-01T09:39:59Z Etudiant O'clock <student@teleporter> # insert et update des données

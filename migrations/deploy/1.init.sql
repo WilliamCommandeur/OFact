@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS product
 CREATE TABLE IF NOT EXISTS invoice
 (
     id int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    visitor_id int REFERENCES visitor(id),
+    visitor_id int NOT NULL REFERENCES visitor(id),
     issued_at timestamptz NOT NULL DEFAULT(now()),
     paid_at timestamptz DEFAULT NULL
 );
