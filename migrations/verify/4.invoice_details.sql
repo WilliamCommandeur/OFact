@@ -2,6 +2,6 @@
 
 BEGIN;
 
--- XXX Add verifications here.
+SELECT * FROM invoice_details WHERE name='Numérobis';
 
 ROLLBACK;

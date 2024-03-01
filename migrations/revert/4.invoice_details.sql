@@ -2,6 +2,7 @@
 
 BEGIN;
 
--- XXX Add DDLs here.
+DROP VIEW invoice_details;
+DROP FUNCTION calculate_total_price(quantity int, price float, tva_ratio float);
 
 COMMIT;
