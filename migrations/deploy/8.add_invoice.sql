@@ -4,7 +4,7 @@ BEGIN;
 
 CREATE FUNCTION add_invoice(json) RETURNS INT AS
 $$
-    INSERT INTO invoice(visitor_id, paid_at)
+    INSERT INTO invoice(visitor_id, issued_at)
     VALUES (
         ($1 ->> 'visitor_id')::INT,
         ($1 ->> 'issued_at')::TIMESTAMPTZ
