@@ -18,26 +18,9 @@ Créez une migration appelée `init`
 - revert : doit supprimer les tables du deploy, attention à l'ordre
 - verify : doit tester l'existence des tables en BDD
 
-Tips :
-
-- le script de seeding fourni doit pouvoir être exécuté sans modification
-- vous trouverez tous les noms de champs dans ce script
-- ajoutez tous les checks et domains que vous jugerez nécessaires
-- essayez d'anticiper les requêtes les plus fréquentes pour eventuellement ajouter des index
-
 ## 3 - 3ème forme normale
 
 Le MCD actuel ne respecte pas la 3ème forme normale
-
-### Kézaco ???
-
-> Les attributs d’une relation sont divisés en deux groupes : le premier groupe est composé de l'identifiant (un ou plusieurs attributs). Le deuxième groupe est composé des autres attributs (éventuellement vide). La troisième forme normale stipule que tout attribut du deuxième groupe ne peut pas dépendre d’un sous-ensemble (strict et excluant l’attribut considéré) d’autres attribut(s) du second groupe. En d’autres termes : « Un attribut non identifiant ne dépend pas d’un ou plusieurs attributs ne participant pas à l'identifiant ». Dit encore autrement : « Tous les attributs non identifiants doivent dépendre directement de l'identifiant, au sens où il n’y a aucun attribut non identifiant dépendant de l'identifiant par dépendances transitives par l’intermédiaire d’autres attributs non identifiants».
-
-[Article wikipédia](https://fr.wikipedia.org/wiki/Forme_normale_(bases_de_donn%C3%A9es_relationnelles)#3FN_%E2%80%93_Troisi%C3%A8me_forme_normale)
-
-OK j'avoue ... c'est pas limpide expliqué comme ça ...  
-Traduction en français : des champs qui ne font pas partie de la clé primaire ne doivent pas être interdépendants  
-Encore plus concrètement : quand on veut mettre à jour une info dans une table, on ne devrait avoir à mettre à jour qu'un seul champ
 
 - Essayez de trouver la faille dans le MCD actuel et corrigez-la
 - Reportez cette modification dans la structure de la BDD avec une nouvelle migration appelée `3fn`
@@ -108,8 +91,6 @@ SELECT * FROM update_invoice('{
 Résultat attendu :
 ![Résultat update_invoice sans paid_at](./images/update_invoice2.jpg)
 
-Tip : Pour switcher entre une valeur fournie et une valeur par défaut, jetez un oeil [ici](https://docs.postgresql.fr/12/functions-conditional.html#FUNCTIONS-COALESCE-NVL-IFNULL), ça devrait vous inspirer 😉
-
 ## 5 - Jointures
 
 Créez une nouvelle migration `invoice_details`.
@@ -156,9 +137,6 @@ Cette vue doit afficher :
 
 Cette vue doit utiliser les requêtes imbriquées pour récupérer les infos dans les différentes tables
 
-Tip : le montant TTC de la facture correspond à la somme du prix TTC de chaque article multiplié par la quantité demandée  
-Allez-y étape par étape pour construire vos imbrications  
-
 ### Exemple
 
 ```sql
@@ -181,11 +159,6 @@ Retournez une table virtuelle avec :
 - le nombre de factures pour cette date nommé `nb_invoices`
 - le CA TTC total généré nommé `total`
 
-On peut créer nos propres types custom, créez un type `sales` et utilisez le pour retourner un set de `sales`  
-[Créer un type](https://www.postgresql.org/docs/12/sql-createtype.html)  
-
-Pour retourner un set d'enregistrments de type XXX, on indique à la fonction `RETURNS SETOF XXX`
-
 Si aucune facture n'est trouvée pour une date donnée, indiquez 0 dans le champ `total`
 
 ### Exemple
@@ -197,7 +170,7 @@ SELECT * FROM sales_by_date('2022-04-10', '2022-04-15');
 Résultat attendu :
 ![Résultat sales](./images/sales.jpg)
 
-## Bonus poilu - Va te coucher Sequelize !! Attention ça pique ! 🌵🌵
+## Bonus 1
 
 Créez une nouvelle migration `packed_invoice`.
 
@@ -215,8 +188,6 @@ Le type `packed` contient :
 - un tableau de lignes au format JSON nommé `lines`
 - le total TTC de la facture
 
-Pour créer le tableau de ligne, jetez un oeil aux [fonctions de création de json de postgres](https://www.postgresql.org/docs/12/functions-json.html#FUNCTIONS-JSON-CREATION-TABLE)
-
 ### Exemple
 
 ```sql
@@ -226,7 +197,7 @@ SELECT * FROM packed_invoice(1);
 Résultat attendu :
 ![Résultat packed_invoice](./images/packed_invoice.jpg)
 
-## Bonus de la mort - Attention ça pique fort !! 🌵🌵🌵
+## Bonus 2
 
 Créez une nouvelle migration `add_invoice`.
 
@@ -242,8 +213,8 @@ Vous pouvez créer plusieurs fonctions intermédiaires (ou utiliser des fonction
 
 ```sql
 SELECT id FROM add_invoice('{
-    "issued_at": "2022-04-13 10:00:00+02", 
-    "visitor_id": 1, 
+    "issued_at": "2022-04-13 10:00:00+02",
+    "visitor_id": 1,
     "products": [
         {
             "id": 1,
