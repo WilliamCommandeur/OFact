@@ -1,5 +1,7 @@
 # oFact
 
+This project is an assignment that I had to complete as part of my training. It was entirely done in SQL, and I left the statement as it was (in French) to better understand the tasks to be performed.
+
 ## 1 - Création de la BDD
 
 Créez une base de données appelée `ofact`.
